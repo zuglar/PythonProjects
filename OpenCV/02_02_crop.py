@@ -4,7 +4,7 @@ from sympy import is_amicable
 image = cv2.imread('GolyoAlszik_rs.jpg')
 
 # Képkivágás; sor és oszlop tartomány megadása
-cropped = image[82:172, 396:486]
+cropped = image[80:170, 390:480]
 
 # Képkivágás; sor és oszlop tartomány megadása
 image[10:100, 20:110] = cropped
