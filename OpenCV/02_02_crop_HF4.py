@@ -16,29 +16,24 @@ def mouse_left_click(event, x, y, flags, param):
             start_x = x
             start_y = y
         elif num_click == 2:
-            end_x = x
-            end_y = y
-        elif num_click == 3:
-            if end_y <= y:
-                start_y = end_y
-                end_y = y
-            else:
+            if y <= start_y:
+                end_y = start_y
                 start_y = y
-
-            if end_x <= x:
-                start_x = end_x
-                end_x = x
             else:
-                start_x = x
+                end_y = y
 
-            num_click = 0
-            print('sx: ' , start_x, 'sy: ', start_y, ' - ex: ', end_x, ' ey: ', end_y)
-            cropped_img = image[start_y:end_y, start_x:end_x]
-            cv2.imshow('cropped_img', cropped_img)
-            cv2.rectangle(image, (start_x, start_y), (end_x, end_y),(0,255,0), 1)
+            if x <= start_x:
+                end_x = start_x
+                start_x = x
+            else:
+                end_x = x
+            print('sx: ', start_x, 'sy: ', start_y, ' - ex: ', end_x, ' ey: ', end_y)
+            image[start_y:end_y, start_x:end_x] = [0, 0, 192]
             cv2.imshow('image', image)
+            num_click = 0
         else:
             num_click = 0
+
 
 # read image from file
 image = cv2.imread('GolyoAlszik_rs.jpg', cv2.IMREAD_COLOR)
