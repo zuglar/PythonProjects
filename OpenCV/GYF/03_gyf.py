@@ -32,7 +32,7 @@ A rajzolóprogramunkat további funkciókkal bővthetjük. Néhány ötlet:
     Rajzolásra választhassunk más geometriát is a kör helyett.
 
 '''
-
+import os
 
 import numpy as np
 import cv2
@@ -69,7 +69,7 @@ def mouse_events(event, x, y, flags, param):
 # # Feltöltés fehér színnel ([255, 255, 255] BGR érték)
 # image[:] = (255, 255, 255)
 
-image = cv2.imread('GolyoAlszik_rs.jpg')
+image = cv2.imread('../GolyoAlszik_rs.jpg')
 
 tool_image = np.ndarray((210, 210, 3), np.uint8)
 tool_image[:] = (255, 255, 255)
