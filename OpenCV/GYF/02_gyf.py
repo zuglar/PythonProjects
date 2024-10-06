@@ -14,11 +14,20 @@
     Az s billentyű lenyomására rögzített nevű fájlba mentsük el az aktuális képmátrixot, PNG formátumban.
     A q vagy az ESC billentyű lenyomásával léphessünk ki a programból.
 
-Készítsünk saját rajzot a programmal és mentsük el PNG fájlba!'''
+Készítsünk saját rajzot a programmal és mentsük el PNG fájlba!
+
+A rajzolóprogram bővítése
+Az előző rajzolóprogramunk működik, de használata nem kényelmes. Nem látjuk, hogy a bal egérgomb lenyomásával milyen színű és
+méretű elem rajzolódik ki. Bővítsük úgy a programot, hogy az egér mozgatásakot lássuk, milyen elem jelenne meg!
+
+Ötlet: Legyen két képmátrixunk. Egy, amely az érvényes rajzolásokat tartalmazza, és egy másik, amire pluszban ideiglenesen rárajzoljuk azt az elemet is,
+ami kattintással megjelenne. Arra kell figyelni, hogy egy következő ideiglenes elem rajzolását az érvényes rajzolást tartalmazóra kell elhelyezni.
+Megjeleníteni az ideiglenest kell. Figyeljünk arra is, hogy mentéskor melyik képmátrixot használjuk!
+
+'''
 
 import numpy as np
 import cv2
-from sympy.physics.units import planck_time
 
 mouse_left_btn_press = False
 mouse_left_btn_release = True
@@ -52,8 +61,15 @@ image = np.ndarray((480, 640, 3), np.uint8)
 # Feltöltés fehér színnel ([255, 255, 255] BGR érték)
 image[:] = (255, 255, 255)
 
+tool_image = np.ndarray((210, 210, 3), np.uint8)
+tool_image[:] = (255, 255, 255)
+
+cv2.circle(tool_image, (105, 105), size, circle_color, -1)
+
 # Kép megjelenítése ablakban
 cv2.imshow('image', image)
+
+cv2.imshow('tool_image', tool_image)
 
 cv2.setMouseCallback('image', mouse_events)
 
@@ -101,6 +117,15 @@ while True:
     if key == 115:
         print('key s - save')
         cv2.imwrite('My_image.png', image)
+
+    if key == 43 or key == 45 or key == 114 or key == 103 or key == 98 or key == 107 or key == 119:
+        tool_image[:] = (255, 255, 255)
+        if circle_color == (255, 255, 255):
+            cv2.circle(tool_image, (105, 105), size, (200, 200, 200), 1)
+        else:
+            cv2.circle(tool_image, (105, 105), size, circle_color, -1)
+
+        cv2.imshow('tool_image', tool_image)
 
     cv2.imshow('image', image)
 
