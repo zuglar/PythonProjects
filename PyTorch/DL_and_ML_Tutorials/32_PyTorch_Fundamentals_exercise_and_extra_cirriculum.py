@@ -72,4 +72,18 @@ print('7. Perform a matrix multiplication on the tensors you created in 6 (again
 
 tensor_A_x_B = tensor_A * tensor_B
 
-print(f'tensor_A_x_B:\n{tensor_A_x_B}')
+print(f'tensor_A_x_B:\n{tensor_A_x_B}\ndevice: {tensor_A_x_B.device}')
+print('-------------------------------------------------------------------')
+print('8. Find the maximum and minimum values of the output of 7.')
+print(f"Min of tensor_A_x_B: {tensor_A_x_B.min()}")
+print(f"Max of tensor_A_x_B: {tensor_A_x_B.max()}")
+
+print('-------------------------------------------------------------------')
+print('9. Find the maximum and minimum index values of the output of 7.')
+print(f"Index of min of tensor_A_x_B: {tensor_A_x_B.argmin()}")
+print(f"Index of max of tensor_A_x_B: {tensor_A_x_B.argmax()}")
+
+print('-------------------------------------------------------------------')
+print('10. Make a random tensor with shape (1, 1, 1, 10) and then create a new tensor with all the 1 dimensions removed to be left with\n'
+      'a tensor of shape (10). Set the seed to 7 when you create it and print out the first tensor and\n'
+      'it is shape as well as the second tensor and it is shape.')
