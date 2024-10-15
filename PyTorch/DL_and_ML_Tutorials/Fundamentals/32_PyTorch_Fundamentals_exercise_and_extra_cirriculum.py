@@ -70,7 +70,7 @@ print(f'tensor_B:\n{tensor_B}\ntensor_B.device: {tensor_B.device}')
 print('-------------------------------------------------------------------')
 print('7. Perform a matrix multiplication on the tensors you created in 6 (again, you may have to adjust the shapes of one of the tensors).')
 
-tensor_A_x_B = tensor_A * tensor_B
+tensor_A_x_B = (tensor_A * tensor_B)
 
 print(f'tensor_A_x_B:\n{tensor_A_x_B}\ndevice: {tensor_A_x_B.device}')
 print('-------------------------------------------------------------------')
@@ -87,3 +87,11 @@ print('-------------------------------------------------------------------')
 print('10. Make a random tensor with shape (1, 1, 1, 10) and then create a new tensor with all the 1 dimensions removed to be left with\n'
       'a tensor of shape (10). Set the seed to 7 when you create it and print out the first tensor and\n'
       'it is shape as well as the second tensor and it is shape.')
+
+RANDOM_SEED = 7
+torch.manual_seed(RANDOM_SEED)
+tensor_1 = torch.rand(1, 1, 1, 10)
+torch.manual_seed(RANDOM_SEED)
+tensor_2 = torch.rand(10)
+print(f'tensor_1:\n{tensor_1}\ntensor_1.shape: {tensor_1.shape}')
+print(f'tensor_2:\n{tensor_2}\ntensor_2.shape: {tensor_2.shape}')
