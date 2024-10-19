@@ -33,10 +33,9 @@ A rajzolóprogramunkat további funkciókkal bővthetjük. Néhány ötlet:
 
 '''
 import math
-import os
 
-import numpy as np
 import cv2
+import numpy as np
 
 mouse_left_btn_press = False
 mouse_left_btn_release = True

@@ -16,9 +16,8 @@
 
 Készítsünk saját rajzot a programmal és mentsük el PNG fájlba!'''
 
-import numpy as np
 import cv2
-from sympy.physics.units import planck_time
+import numpy as np
 
 mouse_left_btn_press = False
 mouse_left_btn_release = True
